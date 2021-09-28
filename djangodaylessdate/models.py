@@ -19,6 +19,8 @@ class DaylessDateField(models.Field):
         return self.to_python(value)
 
     def get_prep_value(self, value):
+        if not value:
+            return ''
         if value and isinstance(value, DaylessDate):
             return ''.join(['{:02d}'.format(x) for x in (value.year, value.month)])
 
