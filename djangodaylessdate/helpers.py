@@ -21,6 +21,9 @@ class DaylessDate:
 
         if self.month not in (range(1, 13)):
             raise Exception('Invalid month')
+        
+        if self.year < 1900 or self.year > 2099:
+            raise Exception('Invalid year')
 
     @property
     def month_name(self):
